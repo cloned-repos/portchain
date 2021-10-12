@@ -1,3 +1,8 @@
+# added
+.jest-cache
+.vscode
+
+
 # Logs
 logs
 *.log
