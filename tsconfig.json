@@ -21,7 +21,7 @@
     "declaration": true,
     "declarationMap": true,
     "downlevelIteration": false,
-    "importHelpers": false,
+    "importHelpers": true,
     "incremental": true,
     "lib": [
       "es5",
@@ -29,7 +29,7 @@
       "es2021",
       "dom"
     ],
-    "module": "commonjs",
+    "module": "esnext",
     "noEmit": false,
     "plugins": [
       {
@@ -48,7 +48,7 @@
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
-    "allowSyntheticDefaultImports": false,
+    "allowSyntheticDefaultImports": true,
     "allowUmdGlobalAccess": false,
     "baseUrl": "./src",
     "esModuleInterop": true,

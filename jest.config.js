@@ -1,59 +1,47 @@
 const collectCoverageFrom = [
-    'src/**/*.ts'
+    'src/controller/loadData.ts',
+    'src/controller/reports.ts',
+    'src/controller/transformations.ts',
+    'src/controller/validations/ajvEnhanced.ts',
+    'src/controller/validations/validationDefs.ts'
 ];
-
-const validationTest = [
-    '/__test__/validation.test.ts$'
-];
-
 
 const testRegex = [
-    ...validationTest
+    '/__test__/validation.test.ts$',
+    '/__test__/loadData.test.ts$',
+    '/__test__/transformations.test.ts$',
+    '/__test__/reports.test.ts$'
 ];
 
-module.exports = {
+export default {
     automock: false,
     collectCoverage: true,
     maxWorkers: "50%",
     collectCoverageFrom,
-    coveragePathIgnorePatterns: ['node_modules', 'test', 'doc.ts'],
+    coveragePathIgnorePatterns: ['node_modules', '__test__'],
     coverageDirectory: 'coverage',
-    //coverageProvider: 'babel', //"v8" is still experimental, but use "v8" for walk through debugging
-    coverageProvider: 'v8', //"v8" is still experimental, but use "v8" for walk through debugging
+    //coverageProvider: 'v8', //"v8" is still experimental, but use "v8" for walk through debugging
+    coverageProvider: 'babel', //"v8" is still experimental, but use "v8" for walk through debugging
+
+
     coverageReporters: ['json', 'lcov', 'text', 'clover'],
-    preset: 'ts-jest',
+    preset: 'ts-jest/presets/js-with-ts',
     testEnvironment: 'node',
     verbose: true,
     cacheDirectory: '.jest-cache',
-    testPathIgnorePatterns: ['/es6/', '/commonjs/'],
+    testPathIgnorePatterns: ['/es6/'],
     testRegex,
     globals: {
         'ts-jest': {
             // ts-jest configuration goes here
             pretty: true,
             tsconfig: 'tsconfig-jest.json',
-            diagnostics: true
         }
     },
-    /*moduleNameMapper: {
-        '^@dist/(.*)$': '<rootDir>/src/lib/distributions/$1',
-        '^@common/(.*)$': [
-            '<rootDir>/src/packages/common/$1',
-            '<rootDir>/src/lib/common/$1',
-            '<rootDir>/src/packages/__test__/$1',
-        ],
-        '^@special/(.*)$': '<rootDir>/src/lib/special/$1',
-        '^@trig/(.*)$': '<rootDir>/src/lib/trigonometry/$1',
-        '^@rng/(.*)$': '<rootDir>/src/lib/rng/$1',
-        '^@lib/(.*)$': '<rootDir>/src/lib/$1',
-        '^lib/(.*)$': '<rootDir>/src/lib/$1'
 
-    },*/
-    //setupFiles: ['<rootDir>/src/packages/__test__/jest-ext.d.ts'],
-    /*setupFilesAfterEnv: [
-        '<rootDir>/src/packages/__test__/jest-extension.ts',
-        '<rootDir>/src/packages/__test__/mock-of-debug.ts'
-    ],*/
+    setupFilesAfterEnv: [
+        '<rootDir>/src/controller/__test__/mock-fetch.ts'
+    ],
 };
 
 

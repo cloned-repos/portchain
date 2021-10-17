@@ -1,8 +1,9 @@
 # added
 .jest-cache
 .vscode
-
-
+types
+docs
+es6
 # Logs
 logs
 *.log
